@@ -1,75 +1,124 @@
-<header>
+## MIMO-OFDM System Simulation Based on MATLAB
 
-<!--
-  <<< Author notes: Course header >>>
-  Include a 1280×640 image, course title in sentence case, and a concise description in emphasis.
-  In your repository settings: enable template repository, add your 1280×640 social image, auto delete head branches.
-  Add your open source license, GitHub uses MIT license.
--->
+This repository contains a MATLAB implementation of a MIMO-OFDM (Multiple-Input Multiple-Output Orthogonal Frequency Division Multiplexing) system.
 
-# Introduction to GitHub
+## 🚀 Project Overview
+The project simulates a MIMO-OFDM communication system to analyze Bit Error Rate (BER) under different configurations of antennas and carriers. The simulation covers:
+- **Transmitter Side Processing**
+- **Channel Model with Multipath Fading**
+- **Receiver Side Processing**
+- **Bit Error Rate (BER) Analysis**
 
-_Get started using GitHub in less than an hour._
+## 📜 Importance of MIMO-OFDM in Modern Communication
+### ✅ Why MIMO-OFDM?
+MIMO-OFDM is a breakthrough technology in modern wireless communication that combines two powerful concepts:
+1. **MIMO (Multiple-Input Multiple-Output)**: Increases the capacity of a wireless communication system by using multiple antennas at both the transmitter and receiver ends, allowing multiple data streams to be transmitted simultaneously.
+2. **OFDM (Orthogonal Frequency Division Multiplexing)**: Converts the frequency-selective fading channel into several flat-fading sub-channels, reducing inter-symbol interference and improving spectral efficiency.
 
-</header>
+This combination is the foundation of next-generation wireless technologies such as:
+- **5G Mobile Networks**
+- **Wi-Fi 6 and Wi-Fi 7**
+- **Satellite Communication Systems**
+- **Public Safety and Military Communications**
+- **Smart Grids and Industrial IoT**
 
-<!--
-  <<< Author notes: Step 1 >>>
-  Choose 3-5 steps for your course.
-  The first step is always the hardest, so pick something easy!
-  Link to docs.github.com for further explanations.
-  Encourage users to open new tabs for steps!
--->
+## 📡 Transmitter Working Principle
+The transmitter in a MIMO-OFDM system performs the following steps:
 
-## Step 1: Create a branch
+1. **Data Input**: Binary data (0s and 1s) are fed to the transmitter.
+2. **Modulation**: The input data is modulated using techniques like **BPSK (Binary Phase Shift Keying)** or **QPSK (Quadrature Phase Shift Keying)**.
+3. **OFDM Mapping**: The modulated data is split into multiple parallel data streams and assigned to orthogonal subcarriers.
+4. **IFFT (Inverse Fast Fourier Transform)**: Converts the frequency domain data into the time domain to prepare it for transmission.
+5. **Cyclic Prefix Addition**: Adds a cyclic prefix to reduce inter-symbol interference.
+6. **MIMO Processing**: The data is distributed across multiple antennas using spatial diversity or multiplexing.
+7. **Transmission**: The signal is transmitted over the wireless channel.
 
-_Welcome to "Introduction to GitHub"! :wave:_
+### Advantages of Transmitter in MIMO-OFDM
+- **Higher Data Rates**: MIMO increases the number of parallel data streams, boosting throughput.
+- **Reduced Interference**: OFDM minimizes inter-symbol interference in multipath environments.
+- **Improved Link Reliability**: MIMO systems enhance signal strength and robustness.
 
-**What is GitHub?**: GitHub is a collaboration platform that uses _[Git](https://docs.github.com/get-started/quickstart/github-glossary#git)_ for versioning. GitHub is a popular place to share and contribute to [open-source](https://docs.github.com/get-started/quickstart/github-glossary#open-source) software.
-<br>:tv: [Video: What is GitHub?](https://www.youtube.com/watch?v=pBy1zgt0XPc)
+## 🎧 Receiver Working Principle
+The receiver in a MIMO-OFDM system reverses the transmitter process:
 
-**What is a repository?**: A _[repository](https://docs.github.com/get-started/quickstart/github-glossary#repository)_ is a project containing files and folders. A repository tracks versions of files and folders. For more information, see "[About repositories](https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories)" from GitHub Docs.
+1. **Signal Reception**: Receives multiple signals from different antennas.
+2. **Cyclic Prefix Removal**: Removes the cyclic prefix to eliminate inter-symbol interference.
+3. **FFT (Fast Fourier Transform)**: Converts the time-domain signal back to the frequency domain.
+4. **Channel Equalization**: Uses algorithms like Zero Forcing (ZF) or Minimum Mean Square Error (MMSE) to mitigate channel impairments.
+5. **Demodulation**: Converts the signal back to binary data.
+6. **Bit Error Rate Calculation**: Compares the received bits with the transmitted bits to calculate BER.
 
-**What is a branch?**: A _[branch](https://docs.github.com/en/get-started/quickstart/github-glossary#branch)_ is a parallel version of your repository. By default, your repository has one branch named `main` and it is considered to be the definitive branch. Creating additional branches allows you to copy the `main` branch of your repository and safely make any changes without disrupting the main project. Many people use branches to work on specific features without affecting any other parts of the project.
+### Advantages of Receiver in MIMO-OFDM
+- **Efficient Data Recovery**: Can extract multiple data streams simultaneously.
+- **Improved Signal Quality**: Enhances the received signal using equalization techniques.
+- **Lower Bit Error Rate**: Reduces errors due to multipath fading.
 
-Branches allow you to separate your work from the `main` branch. In other words, everyone's work is safe while you contribute. For more information, see "[About branches](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches)".
+## 📊 Impact on Society
+The implementation of MIMO-OFDM has significantly transformed wireless communication systems by:
 
-**What is a profile README?**: A _[profile README](https://docs.github.com/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme)_ is essentially an "About me" section on your GitHub profile where you can share information about yourself with the community on GitHub.com. GitHub shows your profile README at the top of your profile page. For more information, see "[Managing your profile README](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme)".
+1. **Providing Higher Internet Speeds**: It supports Gigabit internet speeds in modern mobile networks.
+2. **Connecting Remote Areas**: Facilitates seamless communication in rural and remote areas.
+3. **Enhancing IoT (Internet of Things)**: Powers smart homes, smart cities, and industrial automation.
+4. **Reliable Communication in Emergencies**: Used in military and public safety communication networks.
+5. **Support for Future 6G Networks**: Lays the foundation for future ultra-fast, high-capacity networks.
 
-![profile-readme-example](/images/profile-readme-example.png)
+## 📊 Results
+The simulation results include:
+- **Impact of MIMO Configurations (2x2, 2x4, 4x4) on BER**
+- **Effect of Carrier Count (16, 32, 64, 128) on BER**
+- **Graphical Representation of BER vs SNR**
 
-### :keyboard: Activity: Your first branch
+The results clearly demonstrate that increasing the number of antennas and reducing the carrier count minimizes the Bit Error Rate (BER) and improves communication performance.
 
-1. Open a new browser tab and navigate to your newly made repository. Then, work on the steps in your second tab while you read the instructions in this tab.
-2. Navigate to the **< > Code** tab in the header menu of your repository.
+## 📂 Folder Structure
+```
+MIMO-OFDM-Simulation
+│
+├── README.md          <-- Project Description
+├── LICENSE            <-- License File
+├── Transmitter.m      <-- Transmitter Side Code
+├── Receiver.m         <-- Receiver Side Code
+├── Results.m          <-- Code to Generate Plots
+├── Results
+│   ├── BER_vs_SNR.png <-- BER Graphs
+│   ├── 2x2_MIMO.png   <-- 2x2 MIMO Results
+│   ├── 4x4_MIMO.png   <-- 4x4 MIMO Results
+```
 
-   ![code-tab](/images/code-tab.png)
+## 💻 MATLAB Files
+1. **Transmitter.m**
+```matlab
+% Transmitter Side Code
+clc; clear; close all;
+N = 64; % Number of Subcarriers
+M = 2;  % Modulation Order (BPSK)
+...
+% OFDM + MIMO Processing
+```
 
-3. Click on the **main** branch drop-down.
+2. **Receiver.m**
+```matlab
+% Receiver Side Code
+clc; clear; close all;
+...
+% Perform FFT, Equalization, and Demodulation
+```
 
-   ![main-branch-dropdown](/images/main-branch-dropdown.png)
+3. **Results.m**
+```matlab
+% Code to Plot Results
+...
+plot(SNR, BER);
+```
 
-4. In the field, name your branch `my-first-branch`. In this case, the name must be `my-first-branch` to trigger the course workflow.
-5. Click **Create branch: my-first-branch** to create your branch.
+## 📜 License
+This project is licensed under the [MIT License](LICENSE).
 
-   ![create-branch-button](/images/create-branch-button.png)
-
-   The branch will automatically switch to the one you have just created.
-   The **main** branch drop-down bar will reflect your new branch and display the new branch name.
-
-6. Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
-
-<footer>
-
-<!--
-  <<< Author notes: Footer >>>
-  Add a link to get support, GitHub status page, code of conduct, license link.
--->
+## 📫 Contact
+For any queries or collaboration, feel free to contact us.
 
 ---
-
-Get help: [Post in our discussion board](https://github.com/orgs/skills/discussions/categories/introduction-to-github) &bull; [Review the GitHub status page](https://www.githubstatus.com/)
-
-&copy; 2024 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
-
-</footer>
+✅ **Contributors**: 
+- Sharath (2021BEC0002)
+- Shivam Kumar (2021BEC0028)
+- Yash Mawalkar (2021BEC0038)
